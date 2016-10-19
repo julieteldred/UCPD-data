@@ -17,7 +17,7 @@ offset = 0
 records = []
 while True:
     url = base_url + '&offset=%d' % offset
-    html = requests.get(url, timeout=3.1).text
+    html = requests.get(url, timeout=5.1).text
     soup = BeautifulSoup(html, 'html.parser')
 
     page_info = soup.find('li', {'class': 'page-count'}).find('span').text
@@ -39,8 +39,9 @@ while True:
     offset += 5
     time.sleep(0.5)
 
-with open('trafficstops.csv', 'w') as f:
-    f.write(','.join(column_names) + '\n')
+with open('data/trafficstops.%s.tsv' % now.strftime('%Y%m%d%H%M%S'), 'w') as f:
+    f.write('\t'.join(column_names) + '\n')
     for record in records:
-        f.write(','.join(record) + '\n')
+        if len(record) > 1:
+            f.write('\t'.join(record) + '\n')
 
