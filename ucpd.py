@@ -42,6 +42,6 @@ while True:
 with open('data/trafficstops.%s.tsv' % now.strftime('%Y%m%d%H%M%S'), 'w') as f:
     f.write('\t'.join(column_names) + '\n')
     for record in records:
-        if len(record) > 1:
+        if len(record) > 1 and "NO TRAFFIC STOPS" not in record[0].upper():
             f.write('\t'.join(record) + '\n')
 
