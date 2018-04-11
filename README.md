@@ -8,3 +8,6 @@ This data has many implications - for the UCPD, for the University of Chicago, a
 
 I have geocoded the data using ArcGIS; you can access the geocoded shapefile on [map \#14 of my Story Map](https://tinyurl.com/uchicagomap).
 
+### Usage
+
+To run the web scraper, you must have python 2.7 installed. Run the `webscraper/webscraper.py` script with no arguments to retrieve all historical UCPD traffic stop data from the UChicago website (from 2015-06-01 to the present). By default, the data will be written to a tab-separated file at data/trafficstops.tsv, although the filename is configurable in `webscraper/settings.py`. Several other settings can be changed in `settings.py` as well--the URL to hit, start and end dates, etc.
